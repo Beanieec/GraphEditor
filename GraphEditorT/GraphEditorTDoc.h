@@ -50,4 +50,5 @@ public:
 	// Вспомогательная функция, задающая содержимое поиска для обработчика поиска
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+	virtual void DeleteContents();
 };

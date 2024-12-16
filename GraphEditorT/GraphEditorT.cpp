@@ -12,6 +12,7 @@
 #include "GraphEditorTDoc.h"
 #include "GraphEditorTView.h"
 
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -21,9 +22,12 @@
 
 BEGIN_MESSAGE_MAP(CGraphEditorTApp, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT, &CGraphEditorTApp::OnAppAbout)
+	ON_COMMAND(ID_VIEW_MATRIX, &CGraphEditorTApp::OnViewMatrix)
+	ON_UPDATE_COMMAND_UI(ID_VIEW_MATRIX, &CGraphEditorTApp::OnUpdateViewMatrix)
 	// Стандартные команды по работе с файлами документов
 	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
+	ON_COMMAND(ID_HELP, &CGraphEditorTApp::OnHelp)
 END_MESSAGE_MAP()
 
 
@@ -158,6 +162,9 @@ protected:
 // Реализация
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	/*afx_msg void OnViewMatrix();*/
+	
 };
 
 CAboutDlg::CAboutDlg() noexcept : CDialogEx(IDD_ABOUTBOX)
@@ -170,6 +177,8 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+	
+	
 END_MESSAGE_MAP()
 
 // Команда приложения для запуска диалога
@@ -180,3 +189,37 @@ void CGraphEditorTApp::OnAppAbout()
 }
 
 // Обработчики сообщений CGraphEditorTApp
+
+
+void CGraphEditorTApp::OnViewMatrix()
+{
+
+	if (matrixExist && matrixDlg) // Если окно уже открыто
+	{
+		matrixDlg->DestroyWindow();  // Уничтожаем окно
+		matrixDlg = nullptr;        // Обнуляем указатель
+		matrixExist = false;   // Обновляем состояние
+	}
+	else
+	{
+		matrixDlg = new CMatrixDialog();
+		matrixDlg->CreateModeless(AfxGetMainWnd(), this);
+		matrixDlg->ShowWindow(SW_SHOW);
+		matrixExist = true;
+	}
+
+
+	
+}
+
+
+void CGraphEditorTApp::OnUpdateViewMatrix(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(matrixExist ? 1 : 0);
+}
+
+
+void CGraphEditorTApp::OnHelp()
+{
+	AfxMessageBox(L"'SHIFT + LMouse' - Передвижение поля\n'Ctrl в режиме Ребро' - создание ребра без направления\n");
+}

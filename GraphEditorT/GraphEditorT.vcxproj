@@ -94,6 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>E:\ucheba\algotitmi\LABI\lab 1\GraphEditorT\GraphEditorT\json-develop\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,6 +185,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CCustomMatrix.h" />
+    <ClInclude Include="CMatrixDialog.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GraphEditorT.h" />
     <ClInclude Include="GraphEditorTDoc.h" />
@@ -194,8 +197,11 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextEditorDlg.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CCustomMatrix.cpp" />
+    <ClCompile Include="CMatrixDialog.cpp" />
     <ClCompile Include="GraphEditorT.cpp" />
     <ClCompile Include="GraphEditorTDoc.cpp" />
     <ClCompile Include="GraphEditorTView.cpp" />
@@ -206,6 +212,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextEditorDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GraphEditorT.rc" />

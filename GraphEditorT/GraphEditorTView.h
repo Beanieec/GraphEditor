@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 class CGraphEditorTView : public CView
 {
 protected:
@@ -24,13 +23,29 @@ public:
 
 private:
 	int backscale = 20;
-	int mode_app = 2;
+	bool ctrl = false;
+	bool lshift = false;
+	bool draging = false;
+	CPoint mouseNow;
+	CPoint lastMousePos;
+	CPoint fieldOffset = CPoint(0, 0);
+	int mode_app = 1;
 	bool drawInProgress = false;
 	bool dragInProgress = false;
 	int draghigher = -1;
+	int draglineer = -1;
 	Lineer lineInProgress;
 	Higher highInProgress;
+
+	CGraphEditorTApp* app;
+
 	///TOOLBAR///
+	bool m_ButtonMoveEnabled = false;
+	bool m_ButtonHigherEnabled = true;
+	bool m_ButtonLineerEnabled = true;
+	bool m_ButtonClearEnabled = true;
+	bool m_ButtonTextEnabled = true;
+
 	bool tb_move = false;
 	bool tb_higher = true;
 	bool tb_lineer = false;
@@ -44,7 +59,11 @@ public:
 	void DrawHighers(CDC& dc);
 	void DrawLineers(CDC& dc);
 
+
+	void IndexingOjects();
+
 	int findHigher(CPoint point);
+	int findLineer(CPoint point);
 	afx_msg void OnButtonfirst();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnButtonhigher();
@@ -53,6 +72,14 @@ public:
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnButtonclear();
+	afx_msg void OnUpdateButtonclear(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateButtonfirst(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateButtonhigher(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateButtonlineer(CCmdUI* pCmdUI);
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnButtonText();
+	afx_msg void OnUpdateButtonText(CCmdUI* pCmdUI);
 };
 
 #ifndef _DEBUG  // версия отладки в GraphEditorTView.cpp

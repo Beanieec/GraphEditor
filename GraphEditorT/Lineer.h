@@ -7,5 +7,7 @@ struct Lineer
 	bool side = 0;
 	int number = 0;
 	CString name = L" ";
+	int high0 = -1;
+	int high1 = -1;
 
 };

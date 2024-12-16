@@ -48,6 +48,15 @@
     <ClInclude Include="Lineer.h">
       <Filter>Graph</Filter>
     </ClInclude>
+    <ClInclude Include="CMatrixDialog.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="CCustomMatrix.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TextEditorDlg.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphEditorT.cpp">
@@ -63,6 +72,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="CMatrixDialog.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="CCustomMatrix.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TextEditorDlg.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
